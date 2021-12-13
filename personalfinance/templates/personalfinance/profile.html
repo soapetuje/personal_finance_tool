@@ -1,0 +1,19 @@
+{% extends "personalfinance/layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+    <h2>{{ user.first_name}}'s Profile</h2>
+        
+
+    <form action="{% url 'profile' %}" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'personalfinance/update_currency.js' %}"></script>
+{% endblock %}

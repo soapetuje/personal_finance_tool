@@ -1,0 +1,34 @@
+.body {
+    padding: 0.5% 1%;
+}
+
+/* div {
+    border: 1px solid black;
+} */
+
+.message {
+    display: none;
+}
+
+.card:hover {
+    color: #fff;
+    background-color: #17a2b8;
+}
+
+.card_danger:hover {
+    color: #fff;
+    background-color: #dc3545;
+}
+
+.asteriskField {
+    display: none;
+}
+
+label {
+    font-size: larger;
+    font-weight: 500;
+}
+
+#id_base_currency {
+    font-weight: bold;
+}

@@ -1,0 +1,80 @@
+{% extends "personalfinance/layout.html" %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block body %}
+    <h1>Welcome, {{ user.first_name }}</h1>
+    <p>Number of Users: <span id="user_count">{{ no_of_users }}</span></p>
+
+    <div>
+        {{ filter_fields.currency|as_crispy_field }}
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ filter_fields.age_group|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            {{ filter_fields.education|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ filter_fields.ethnicity|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            {{ filter_fields.race|as_crispy_field }}
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card mb-3">
+                <h5 class="card-header">Income</h5>
+                <div class="card-body">
+                    <h5 class="display_currency">{{ filter_fields.currency.value }}</h5>
+                    <h5 class="card-title" id="income">{{ income }}</h5>
+                    <p class="card-text">You are in the <strong id="income_p">{{ income_percentile }}</strong><strong id="income_s">{{ income_suffix }}</strong> percentile of users for Income <span class="message" >with selected filter</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card mb-3">
+                <h5 class="card-header">Assets</h5>
+                <div class="card-body">
+                    <h5 class="display_currency">{{ filter_fields.currency.value }}</h5>
+                    <h5 class="card-title" id="assets">{{ assets }}</h5>
+                    <p class="card-text">You are in the <strong id="assets_p">{{ asset_percentile }}</strong><strong id="assets_s">{{ asset_suffix }}</strong> percentile of users for Asset Value <span class="message" >with selected filter</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card mb-3">
+                <h5 class="card-header">Debts</h5>
+                <div class="card-body">
+                    <h5 class="display_currency">{{ filter_fields.currency.value }}</h5>
+                    <h5 class="card-title" id="liabilities">{{ debts }}</h5>
+                    <p class="card-text">You are in the <strong id="liabilities_p">{{ debt_percentile }}</strong><strong id="liabilities_s">{{ debt_suffix }}</strong> percentile of user for Debts <span class="message" >with selected filter</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card mb-3">
+                <h5 class="card-header">Net Worth</h5>
+                <div class="card-body">
+                    <h5 class="display_currency">{{ filter_fields.currency.value }}</h5>
+                    <h5 class="card-title" id="net_worth">{{ net_worth }}</h5>
+                    <p class="card-text">You are in the <strong id="net_worth_p">{{ net_worth_percentile }}</strong><strong id="net_worth_s">{{ net_worth_suffix }}</strong> percentile of users for Net Worth <span class="message" >with selected filter</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'personalfinance/update_filters.js' %}"></script>
+{% endblock %}

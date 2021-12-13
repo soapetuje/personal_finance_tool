@@ -1,0 +1,54 @@
+{% extends "personalfinance/layout.html" %}
+{% load static %}
+
+{% block body %}
+        <!-- <div id="container">
+        {% if user.is_authenticated %}
+            <div id="dashboard">
+                <a href="{% url 'dashboard' %}"><button>Go To Dashboard</button></a>
+            </div>
+        {% endif %}
+        <div id="help"><button>How it works</button></div>
+    </div> -->
+
+    <h1>About the Tool</h1>
+    <p>With the increasing interest in personal finance and financial independence, this website is intended as a tool to help the user understand where they rank relative to other users on the platform.</p>
+    <p>This page is built using the <a href="https://www.djangoproject.com/">Django Web Framework</a> along with HTML, JavaScript and <a href="https://getbootstrap.com/">Bootstrap</a> for styling</p>
+
+    <h2>Getting Set Up</h2>
+    <p>After registering an account users are prompted for the following information</p>
+    <ul>
+        <li>Age Group</li>
+        <li>Education Level</li>
+        <li>Race and Ethnicity</li>
+        <li>Preferred Currency</li>
+        <li>Yearly Income</li>
+        <li>Total Value of All Assets</li>
+        <li>Total Value of All Debts</li>
+    </ul>
+    <p>This information is used later in the dashboard to show where the user falls relative to other users in the 
+        selected filter.
+    </p>
+
+    <h2>Exchange Rates</h2>
+    <p>Exchange rate data is queried daily from the <a href="https://exchangeratesapi.io/">Exchange Rate API</a>
+     this is then used to bring all users to a base currency (Euro) inorder to correctly calculate the percentiles</p>
+    <p>Current exchange rates are also displayed in a separate page</p>
+
+    <h2>Dashboard</h2>
+    <p>On the dashboard, the user gets access to four cards which shows, Income, Assets, Debts and Net worth along with their percentile for all users on the platform (default filter)</p>
+
+    <p>There are filters which do different things</p>
+
+    <p>The <em>Currency</em> filter allows the user to convert between the currencies available</p>
+
+    <p>The <em>Age, Ethnicity, Education and Race</em> filters allows the user to determine their percentile for specific subsets within those groups. One limitation is that only one group can be used as a filter at a time</p>
+    {% if user.is_authenticated %}
+        <a href="{% url 'dashboard' %}"><button type="button" class="btn btn-primary">Go To Dashboard</button></a>
+    {% endif %}
+
+    <footer><p>Created by <a href="https://github.com/soapetuje">Sammie Apetuje</a></p></footer>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
